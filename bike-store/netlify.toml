@@ -1,4 +1,2 @@
 [build]
-  command = "npm run build:bike-store"
-  publish = "bike-store/build"
   ignore = "git diff --quiet HEAD^ HEAD bike-store/"

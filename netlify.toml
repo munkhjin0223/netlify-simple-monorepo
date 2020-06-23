@@ -1,0 +1,3 @@
+[build]
+  command = "npm run build:car-store"
+  publish = "car-store/build"
