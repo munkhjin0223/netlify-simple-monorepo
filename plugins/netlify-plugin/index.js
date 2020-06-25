@@ -1,8 +1,10 @@
 require('dotenv').config();
 
 module.exports = {
-  onPreBuild: ({ utils, constants }) => {
-    console.log('Hello world from onPreBuild event!');
+  onPreBuild: (args) => {
+    console.log('-------args----------: ', args);
+
+    const { utils, constants } = args;
 
     console.log(process.env.SITE_ID, ' ----- ', constants.SITE_ID);
 
