@@ -1,10 +1,11 @@
 require('dotenv').config();
 
 module.exports = {
-  onPreBuild: ({ utils, netlifyConfig, build }) => {
+  onPreBuild: ({ utils, netlifyConfig }) => {
+    const { build, git } = utils;
     const { FOLDER_NAME } = netlifyConfig.build.environment;
 
-    const { modifiedFiles, deletedFiles, createdFiles } = utils.git;
+    const { modifiedFiles, deletedFiles, createdFiles } = git;
 
     const files = [...modifiedFiles, ...deletedFiles, ...createdFiles];
 
