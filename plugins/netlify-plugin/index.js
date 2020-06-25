@@ -4,11 +4,18 @@ module.exports = {
   onPreBuild: (args) => {
     console.log('-------args----------: ', JSON.stringify(args));
 
-    const { utils, constants } = args;
+    const { utils } = args;
+    const { FOLDER_NAME } = args.netlifyConfig.build.environment;
 
-    console.log(constants.MY_SITE_NAME, ' ----- ', constants.SITE_NAME);
+    console.log('FOLDER_NAME', FOLDER_NAME);
 
-    if (constants.MY_SITE_NAME === constants.SITE_NAME) {
+    const { modifiedFiles, deletedFiles, createdFiles } = utils.git;
+
+    const files = [...modifiedFiles, deletedFiles, createdFiles];
+
+    console.log('files', files);
+
+    if (!files.startsWith(FOLDER_NAME)) {
       return utils.build.cancelBuild('Cancel message');
     }
   },
