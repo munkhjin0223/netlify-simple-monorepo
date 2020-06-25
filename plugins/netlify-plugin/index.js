@@ -9,6 +9,9 @@ module.exports = {
 
     const files = [...modifiedFiles, ...deletedFiles, ...createdFiles];
 
+    console.log('files: ', files);
+    console.log('FOLDER_NAME: ', FOLDER_NAME);
+
     if (!files.some((file) => file.startsWith(FOLDER_NAME))) {
       return build.cancelBuild('No change');
     }
