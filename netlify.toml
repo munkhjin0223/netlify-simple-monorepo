@@ -1,5 +1,2 @@
-[build]
-  command = "npm run build:car-store"
-  publish = "car-store/build"
 [[plugins]]
   package = "/plugins/netlify-plugin"

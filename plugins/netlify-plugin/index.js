@@ -6,9 +6,9 @@ module.exports = {
 
     const { utils, constants } = args;
 
-    console.log(process.env.SITE_ID, ' ----- ', constants.SITE_ID);
+    console.log(constants.MY_SITE_NAME, ' ----- ', constants.SITE_NAME);
 
-    if (process.env.SITE_ID === constants.SITE_ID) {
+    if (constants.MY_SITE_NAME === constants.SITE_NAME) {
       return utils.build.cancelBuild('Cancel message');
     }
   },
