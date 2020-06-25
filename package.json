@@ -6,5 +6,8 @@
   "scripts": {
     "build:bike-store": "cd bike-store && npm i && npm run build",
     "build:car-store": "cd car-store && npm i && npm run build"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }

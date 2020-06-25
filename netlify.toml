@@ -1,3 +1,6 @@
 [build]
   command = "npm run build:car-store"
   publish = "car-store/build"
+  ignore = "git diff --quiet HEAD^ HEAD car-store/"
+[[plugins]]
+  package = "/plugins/netlify-plugin"
