@@ -1,22 +1,15 @@
 require('dotenv').config();
 
 module.exports = {
-  onPreBuild: (args) => {
-    console.log('-------args----------: ', JSON.stringify(args));
-
-    const { utils } = args;
-    const { FOLDER_NAME } = args.netlifyConfig.build.environment;
-
-    console.log('FOLDER_NAME', FOLDER_NAME);
+  onPreBuild: ({ utils, netlifyConfig, build }) => {
+    const { FOLDER_NAME } = netlifyConfig.build.environment;
 
     const { modifiedFiles, deletedFiles, createdFiles } = utils.git;
 
-    const files = [...modifiedFiles, deletedFiles, createdFiles];
+    const files = [...modifiedFiles, ...deletedFiles, ...createdFiles];
 
-    console.log('files', files);
-
-    if (!files.startsWith(FOLDER_NAME)) {
-      return utils.build.cancelBuild('Cancel message');
+    if (!files.some((file) => file.startsWith(FOLDER_NAME))) {
+      return build.cancelBuild('No change');
     }
   },
 };
